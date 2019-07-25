@@ -7,7 +7,7 @@ import ItemFilms from './components/Films/ItemFilms';
 
 import ItemPlanets from './components/Planets/ItemPlanets';
 import Planets from './components/Planets/Planets';
-import { BrowserRouter as Router, Route, Link, } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 export default class App extends Component {

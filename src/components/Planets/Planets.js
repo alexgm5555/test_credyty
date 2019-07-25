@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import sortBy from 'sort-array'
 
 export default class Planets extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export default class Planets extends Component {
     async componentDidMount() {
         const people = await fetch('https://swapi.co/api/planets/?search=' + this.props.filterText)
         const data = await people.json()
-        this.setState({ dataFilter: data.results })
+        this.setState({ dataFilter: sortBy(data.results,'name') })
     }
     componentWillReceiveProps(next_props) {
         this.setState({ dataFilter: [] })
@@ -24,7 +25,7 @@ export default class Planets extends Component {
                     throw new Error('Something went wrong ...');
                 }
             })
-            .then(data => this.setState({ dataFilter: data.results }))
+            .then(data => this.setState({ dataFilter: sortBy(data.results,'name')}))
             .catch(error => this.setState({ error, isLoading: false }));
     }
 

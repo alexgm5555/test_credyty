@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 
 
-import { Link, } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class Header extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link><Link to="/">People</Link></Nav.Link>
                         <Nav.Link ><Link to="/Films">Films</Link></Nav.Link>
-                        <Nav.Link><Link to="/Planets">Planets</Link></Nav.Link>
+                        <Nav.Link><a><Link to="/Planets">Planets</Link></a></Nav.Link>
                     </Nav>
                     <Form inline>
                         <FormControl

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, } from 'react-router-dom'
+import sortBy from 'sort-array'
 
 export default class Films extends Component {
     constructor(props) {
@@ -11,10 +12,9 @@ export default class Films extends Component {
         };
     }
     async componentDidMount() {
-        debugger
         const people = await fetch('https://swapi.co/api/films/?search=' + this.props.filterText)
         const data = await people.json()
-        this.setState({ dataFilter: data.results })
+        this.setState({ dataFilter: sortBy(data.results,'title')})
     }
     componentWillReceiveProps(next_props) {
         this.setState({ dataFilter: [] })
@@ -26,7 +26,7 @@ export default class Films extends Component {
                     throw new Error('Something went wrong ...');
                 }
             })
-            .then(data => this.setState({ dataFilter: data.results }))
+            .then(data => this.setState({ dataFilter: sortBy(data.results,'name')}))
             .catch(error => this.setState({ error, isLoading: false }));
     }
 
